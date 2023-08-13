@@ -1,0 +1,48 @@
+def push(val,S):
+    S.append(val)
+    #print("After push operation",S)
+    
+def pop(S):
+    S_size = len(S)
+    if S_size ==0:
+        print("Stack is empty")
+    else:
+        item = S.pop()
+        #print("Deleted item:",item)
+        #print("After pop operation",S)
+    return item    
+def evaluate_postfix(S,string):
+    
+    op = ['+','-','*','/']
+    for i in string:
+        if i not in op:
+            push (i,S)
+        else:
+            a = pop (S)
+            b = pop (S)
+            if i == '+':
+                res = int(a)+int(b)
+                push (res,S)
+            if i == '-':
+                res = int(a) - int (b)
+                push (res,S)
+            if i =='*':
+                res = int(a) * int(b)
+                push (res,S)
+                
+            if i =='/':
+                res =int (a)/int (b)
+                push (res,S)
+                
+    print (S)
+            
+
+        
+stack = []
+string = "65+9*"
+evaluate_postfix(stack,string)
+
+# push(5,stack)
+# push(10,stack)
+# push(15,stack)
+# pop(stack)
